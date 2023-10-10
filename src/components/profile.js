@@ -91,7 +91,7 @@ function Profile() {
   const getTopArtists = async (accessToken, range) => {
     try {
       const response = await fetch(
-        `https://api.spotify.com/v1/me/top/artists?time_range=${range}&limit=10`,
+        `https://api.spotify.com/v1/me/top/artists?time_range=${range}&limit=50`,
         {
           method: "GET",
           headers: {
@@ -101,7 +101,7 @@ function Profile() {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to fetch top artists.");
+     
       }
 
       const data = await response.json();
@@ -131,9 +131,9 @@ function Profile() {
               value={timeRange}
               onChange={handleTimeRangeChange}
             >
-              <ToggleButton className="time-btn"variant="primary" id="tbg-pp-1" value={"long_term"}>1 Year</ToggleButton>
-              <ToggleButton className="time-btn"variant="primary" id="tbg-radio-2" value={"medium_term"}>6 Months</ToggleButton>
-              <ToggleButton className="time-btn"variant="primary" id="tbg-radio-3" value={"short_term"}>3 Months</ToggleButton>
+              <ToggleButton className="time-btn" variant="primary" value={"long_term"}>1 Year</ToggleButton>
+              <ToggleButton className="time-btn" variant="primary" value={"medium_term"}>6 Months</ToggleButton>
+              <ToggleButton className="time-btn" variant="primary" value={"short_term"}>3 Months</ToggleButton>
             </ToggleButtonGroup>
             </div>
           </div>
@@ -157,7 +157,6 @@ function Profile() {
                         Genres: {artist.genres.join(", ")}
                       </p>
                     )}
-
                   </div>
                 </li>
               ))}
